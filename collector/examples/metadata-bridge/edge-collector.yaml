@@ -77,9 +77,8 @@ exporters:
     verbosity: normal
 
 processors:
-  batch:
-    metadata_keys:
-    - Authorization
+  # Note we have omitted a batch processor because the batch processor
+  # does not pass through per-request metadata.
 
 service:
   extensions: [headers_setter, basicauth]
