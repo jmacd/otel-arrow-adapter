@@ -17,7 +17,7 @@ receivers:
 
 exporters:
   logging:      
-    verbosity: detailed
+#   verbosity: detailed
 
   otlphttp:
     # You can use an HTTP listener on port 5001 to see the headers
