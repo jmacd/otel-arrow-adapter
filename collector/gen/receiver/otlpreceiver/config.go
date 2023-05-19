@@ -38,7 +38,11 @@ type Protocols struct {
 
 // ArrowSettings
 type ArrowSettings struct {
-	Enabled bool `mapstructure:"enabled"`
+	Disabled bool `mapstructure:"disabled"`
+
+	// DisableMixedSignals=true indicates to use the multi-signal ArrowStream
+	// RPC method.  Otherwise, use per-signal stream methods.
+	DisableMixedSignals bool `mapstructure:"disable_mixed_signals"`
 }
 
 // Config defines configuration for OTLP receiver.
@@ -55,7 +59,7 @@ func (cfg *Config) Validate() error {
 	if cfg.GRPC == nil && cfg.HTTP == nil {
 		return errors.New("must specify at least one protocol when using the OTLP receiver")
 	}
-	if cfg.Arrow != nil && cfg.Arrow.Enabled && cfg.GRPC == nil {
+	if cfg.Arrow != nil && !cfg.Arrow.Disabled && cfg.GRPC == nil {
 		return errors.New("must specify at gRPC protocol when using the OTLP+Arrow receiver")
 	}
 	return nil

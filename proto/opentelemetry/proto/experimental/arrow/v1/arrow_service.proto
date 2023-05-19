@@ -29,7 +29,24 @@ service ArrowStreamService {
   // The ArrowStream endpoint is a bi-directional stream used to send batch of `BatchArrowRecords` from the exporter
   // to the collector. The collector returns `BatchStatus` messages to acknowledge the `BatchArrowRecords`
   // messages received.
+
+  // ArrowStream supports delivery of mixed signals on a single stream.
   rpc ArrowStream(stream BatchArrowRecords) returns (stream BatchStatus) {}
+}
+
+service ArrowTracesService {
+  // ArrowTraces supports only SPANS_DATA.
+  rpc ArrowTraces(stream BatchArrowRecords) returns (stream BatchStatus) {}
+}
+
+service ArrowMetricsService {
+  // ArrowMetrics supports only METRICS_DATA.
+  rpc ArrowMetrics(stream BatchArrowRecords) returns (stream BatchStatus) {}
+}
+
+service ArrowLogsService {
+  // ArrowLogs supports only LOGS_DATA.
+  rpc ArrowLogs(stream BatchArrowRecords) returns (stream BatchStatus) {}
 }
 
 // A message sent by an exporter to a collector containing a batch of Arrow records.
@@ -46,27 +63,33 @@ message BatchArrowRecords {
 
 // Enumeration of all the OTLP Arrow payload types currently supported by the OTLP Arrow protocol.
 enum OtlpArrowPayloadType {
-  // Main OTel entities
-  // A payload representing a collection of metrics.
-  METRICS = 0;
-  INT_GAUGE = 2;
-  DOUBLE_GAUGE = 3;
-  INT_SUM = 4;
-  DOUBLE_SUM = 5;
-  SUMMARIES = 6;
-  HISTOGRAMS = 7;
-  EXP_HISTOGRAMS = 8;
+  // UNSPECIFIED should not be used.
+  UNSPECIFIED = 0;
 
+  // Main OTel entities
+
+  // A payload representing a collection of metrics.
+  METRICS_DATA = 1;
   // A payload representing a collection of logs.
-  LOGS = 9;
+  LOGS_DATA = 2;
   // A payload representing a collection of traces.
-  SPANS = 10;
+  SPANS_DATA = 3;
 
   // Related OTel entities
   // A payload representing a collection of resource attributes.
-  RESOURCE_ATTRS = 11;
+  RESOURCE_ATTRS = 4;
   // A payload representing a collection of scope attributes.
-  SCOPE_ATTRS = 12;
+  SCOPE_ATTRS = 5;
+
+  // Metrics entities
+  INT_GAUGE = 6;
+  DOUBLE_GAUGE = 7;
+  INT_SUM = 8;
+  DOUBLE_SUM = 9;
+  SUMMARIES = 10;
+  HISTOGRAMS = 11;
+  EXP_HISTOGRAMS = 12;
+
   // A payload representing a collection of metric attributes.
   INT_GAUGE_ATTRS = 13;
   DOUBLE_GAUGE_ATTRS = 14;
@@ -75,8 +98,10 @@ enum OtlpArrowPayloadType {
   SUMMARY_ATTRS = 17;
   HISTOGRAM_ATTRS = 18;
   EXP_HISTOGRAM_ATTRS = 19;
+
   // A payload representing a collection of log attributes.
   LOG_ATTRS = 20;
+
   // A payload representing a collection of span attributes.
   SPAN_ATTRS = 21;
   // A payload representing a collection of span events.

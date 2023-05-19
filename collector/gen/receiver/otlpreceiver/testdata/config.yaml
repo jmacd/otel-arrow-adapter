@@ -41,4 +41,5 @@ protocols:
       max_age: 7200
   # Arrow enables receiving OTLP+Arrow streaming
   arrow:
-    enabled: true
+    disabled: false
+    disable_mixed_signals: false

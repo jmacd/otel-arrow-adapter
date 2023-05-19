@@ -55,8 +55,7 @@ func createDefaultConfig() component.Config {
 			WriteBufferSize: 512 * 1024,
 		},
 		Arrow: ArrowSettings{
-			NumStreams: 1,
-			Enabled:    false,
+			NumStreams: runtime.NumCPUs(),
 		},
 	}
 }

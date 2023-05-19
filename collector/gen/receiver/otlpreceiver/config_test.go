@@ -139,9 +139,7 @@ func TestUnmarshalConfig(t *testing.T) {
 						MaxAge:         7200,
 					},
 				},
-				Arrow: &ArrowSettings{
-					Enabled: true,
-				},
+				Arrow: &ArrowSettings{},
 			},
 		}, cfg)
 
@@ -167,9 +165,7 @@ func TestUnmarshalConfigUnix(t *testing.T) {
 					Endpoint: "/tmp/http_otlp.sock",
 					// Transport: "unix",
 				},
-				Arrow: &ArrowSettings{
-					Enabled: false,
-				},
+				Arrow: &ArrowSettings{},
 			},
 		}, cfg)
 }
