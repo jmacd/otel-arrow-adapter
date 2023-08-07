@@ -1,7 +1,7 @@
 ## Security
 
-OTEL Arrow Adapter takes the security of our project seriously. If you believe
-you have found a security vulnerability in OTEL Arrow Adapter, please report it
+OTel Arrow takes the security of our project seriously. If you believe
+you have found a security vulnerability an OTel Arrow component, please report it
 to us as described below.
 
 ## Reporting a Vulnerability
@@ -9,11 +9,8 @@ to us as described below.
 **Please do not report security vulnerabilities through public GitHub issues.**
 
 Instead, please report any potential or current instances of security
-vulnerabilities with OTEL Arrow Adapter to the F5 Security Incident Response Team
-at F5SIRT@f5.com. Mention OTEL Arrow Adapter in the subject line.
-
-For more information visit
-[https://www.f5.com/services/support/report-a-vulnerability](https://www.f5.com/services/support/report-a-vulnerability)
+vulnerabilities with OTel Arrow components to the OpenTelemetry Technical Committee
+at cncf-opentelemetry-tc@lists.cncf.io. Mention OTel Arrow in the subject line.
 
 ## Threat Model
 
