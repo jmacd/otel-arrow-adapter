@@ -1,16 +1,16 @@
 ## Security
 
-OTel Arrow takes the security of our project seriously. If you believe
-you have found a security vulnerability an OTel Arrow component, please report it
-to us as described below.
+OTel Arrow takes the security of our project seriously.
 
 ## Reporting a Vulnerability
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report any potential or current instances of security
-vulnerabilities with OTel Arrow components to the OpenTelemetry Technical Committee
-at cncf-opentelemetry-tc@lists.cncf.io. Mention OTel Arrow in the subject line.
+Please see the [OpenTelemetry org-wide security
+policy](https://github.com/open-telemetry/.github/blob/main/SECURITY.md)
+for instructions on reporting vulnerabilities, including how to
+contact the maintainers technical committee of the project secure
+using a secure channel.
 
 ## Threat Model
 
